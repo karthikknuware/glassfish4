@@ -13,7 +13,10 @@ sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
  EOH
 end
-
+package 'openjdk-7-jdk' do
+  action :install
+end
+ 
 bash "insert_line" do
   user "root"
   code <<-EOS
