@@ -1,0 +1,7 @@
+name             'glass'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures glass'
+long_description 'Installs/Configures glass'
+version          '0.1.0'
