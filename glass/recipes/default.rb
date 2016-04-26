@@ -19,7 +19,7 @@ bash "insert_line" do
   code <<-EOS
   echo "JAVA_HOME="/usr/lib/jvm/java-8-oracle"" >> /etc/environment
   EOS
-  not_if "grep -q JAVA_HOME= "/usr/lib/jvm/java-8-oracle" /etc/environment"
+  #not_if "grep -q JAVA_HOME= "/usr/lib/jvm/java-8-oracle" /etc/environment"
 end
 bash 'install-glassfish' do
   code <<-EOH
