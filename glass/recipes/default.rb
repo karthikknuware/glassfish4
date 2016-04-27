@@ -35,26 +35,9 @@ end
 bash 'install-glassfish' do
   code <<-EOH
   cd /opt/glassfish4/bin
-  sudo ./asadmin create-domain integration
- EOH
+   sudo ./asadmin --user admin --passwordfile password.txt  create-domain integ
+   sudo ./asadmin --user admin --passwordfile password.txt  start-domain integ
+   sudo ./asadmin --user admin --passwordfile password.txt  enable-secure-admin
+   sudo ./asadmin --user admin --passwordfile password.txt  restart-domain integ
+    EOH
 end
-chef.json = {
-        
-        "glassfish" => {
-           
-            "domains" => {
-                "integration" => {
-                    "config" => {
-                        "admin_port" => 4848,
-                        "username" => "admin",
-                        "password" => "admin",
-                        "remote_access" => true,
-                        "secure" => true
-                    }
-              }
-              
-            }
-          
-        }
-  
-}
