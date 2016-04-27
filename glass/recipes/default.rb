@@ -32,4 +32,8 @@ wget download.java.net/glassfish/4.0/release/glassfish-4.0.zip
 unzip glassfish-4.0.zip -d /opt
  EOH
 end
+bash 'install-glassfish' do
+  code <<-EOH
+  cd /opt/glassfish4/bin
+  sudo ./asadmin create-domain integration
 
