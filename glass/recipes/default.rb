@@ -38,4 +38,23 @@ bash 'install-glassfish' do
   sudo ./asadmin create-domain integration
  EOH
 end
-include_recipe 'configure'
+chef.json = {
+        
+        "glassfish" => {
+           
+            "domains" => {
+                "integration" => {
+                    "config" => {
+                        "admin_port" => 4848,
+                        "username" => "admin",
+                        "password" => "admin",
+                        "remote_access" => true,
+                        "secure" => true
+                    }
+              }
+              
+            }
+          
+        }
+  
+}
