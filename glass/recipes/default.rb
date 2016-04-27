@@ -36,4 +36,6 @@ bash 'install-glassfish' do
   code <<-EOH
   cd /opt/glassfish4/bin
   sudo ./asadmin create-domain integration
-
+ EOH
+end
+include_recipe 'configure'
