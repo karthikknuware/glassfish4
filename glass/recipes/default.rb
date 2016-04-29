@@ -37,5 +37,9 @@ bash 'install-glassfish' do
    sudo ./asadmin --user admin --passwordfile password.txt  start-domain integ
    sudo ./asadmin --user admin --passwordfile password.txt  enable-secure-admin
    sudo ./asadmin --user admin --passwordfile password.txt  restart-domain integ
+   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt  set configs.config.default-config.cdi-service.enable-implicit-cdi=false
+   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt set configs.config.server-config.cdi-service.enable-implicit-cdi=false
+   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jvm-options --target default-config -- -Dcom.numi.java.app.env=testing
+   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jvm-options --target server-config -- -Dcom.numi.java.app.env=testing
     EOH
 end
