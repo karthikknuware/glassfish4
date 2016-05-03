@@ -14,14 +14,6 @@ end
 package 'openjdk-7-jdk' do
   action :install
 end
- 
-bash "insert_line" do
-  user "root"
-  code <<-EOS
-  echo "JAVA_HOME="/usr/lib/jvm/java-8-oracle"" >> /etc/environment
-  EOS
-  #not_if "grep -q JAVA_HOME= "/usr/lib/jvm/java-8-oracle" /etc/environment"
-end
 bash 'install-glassfish' do
   code <<-EOH
 source /etc/environment
@@ -30,6 +22,19 @@ wget download.java.net/glassfish/4.0/release/glassfish-4.0.zip
 unzip glassfish-4.0.zip -d /opt
  EOH
 end
+bash 'create-password' do
+  code <<-EOH
+  sudo touch password.txt
+  sudo chmod 777 password.txt
+  EOH
+end  
+bash "insert_line" do
+  user "root"
+  code <<-EOS
+  echo "AS_ADMIN_PASSWORD=admin
+        AS_ADMIN_ADMINPASSWORD=admin
+        AS_ADMIN_USERPASSWORD=admin" >> /opt/glassfish4/bin/password.txt
+  EOS
 bash 'install-glassfish' do
   code <<-EOH
   cd /opt/glassfish4/bin
@@ -43,3 +48,10 @@ bash 'install-glassfish' do
    sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jvm-options --target server-config -- -Dcom.numi.java.app.env=testing
     EOH
 end
+bash 'Setting up Postgres' do
+  code <<-EOH
+  cd /opt/glassfish4/glassfish/domains/integ/lib
+  sudo wget https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre7.jar
+  
+
+  
