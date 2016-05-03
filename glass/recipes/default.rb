@@ -55,5 +55,5 @@ bash 'Setting up Postgres' do
   sudo wget https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre7.jar
   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-connection-pool --datasourceclassname org.postgresql.xa.PGXADataSource --restype javax.sql.XADataSource --property portNumber=5432:password=thisisareallylongpassword1:user=gfuser:serverName=diyapp-integ2.caibfusn2myj.us-east-1.rds.amazonaws.com:databaseName=diyapp appPool
   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-connection-pool --datasourceclassname org.postgresql.xa.PGXADataSource --restype javax.sql.XADataSource --property portNumber=5444:password=thisisareallylongpassword1:user=gfuser:serverName=diyfdb-integ2.caibfusn2myj.us-east-1.rds.amazonaws.com:databaseName=diyfdb fdbPool
-
+  sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-resource --connectionpoolid appPool jdbc/appPool
   
