@@ -35,6 +35,7 @@ bash "insert_line" do
         AS_ADMIN_ADMINPASSWORD=admin
         AS_ADMIN_USERPASSWORD=admin" >> /opt/glassfish4/bin/password.txt
   EOS
+end  
 bash 'install-glassfish' do
   code <<-EOH
   cd /opt/glassfish4/bin
