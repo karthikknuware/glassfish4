@@ -47,7 +47,7 @@ bash 'install-glassfish' do
    sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt set configs.config.server-config.cdi-service.enable-implicit-cdi=false
    sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jvm-options --target default-config -- -Dcom.numi.java.app.env=testing
    sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jvm-options --target server-config -- -Dcom.numi.java.app.env=testing
-    EOH
+  EOH
 end
 bash 'Setting up Postgres' do
   code <<-EOH
@@ -56,4 +56,5 @@ bash 'Setting up Postgres' do
   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-connection-pool --datasourceclassname org.postgresql.xa.PGXADataSource --restype javax.sql.XADataSource --property portNumber=5432:password=thisisareallylongpassword1:user=gfuser:serverName=diyapp-integ2.caibfusn2myj.us-east-1.rds.amazonaws.com:databaseName=diyapp appPool
   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-connection-pool --datasourceclassname org.postgresql.xa.PGXADataSource --restype javax.sql.XADataSource --property portNumber=5444:password=thisisareallylongpassword1:user=gfuser:serverName=diyfdb-integ2.caibfusn2myj.us-east-1.rds.amazonaws.com:databaseName=diyfdb fdbPool
   sudo ./asadmin --user admin --passwordfile /opt/glassfish4/bin/password.txt create-jdbc-resource --connectionpoolid appPool jdbc/appPool
-  
+  EOH
+end  
