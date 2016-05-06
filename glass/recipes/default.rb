@@ -24,6 +24,7 @@ unzip glassfish-4.0.zip -d /opt
 end
 bash 'create-password' do
   code <<-EOH
+  cd /opt/glassfish4/bin/
   sudo touch password.txt
   sudo chmod 777 password.txt
   EOH
